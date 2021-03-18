@@ -144,6 +144,8 @@ GEM
     thread_safe (0.3.6)
     tzinfo (1.2.9)
       thread_safe (~> 0.1)
+    validates_zipcode (0.3.3)
+      activemodel (>= 4.2.0)
     websocket-driver (0.7.3)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
@@ -165,6 +167,7 @@ DEPENDENCIES
   spring-watcher-listen (~> 2.0.0)
   sqlite3 (~> 1.4)
   tzinfo-data
+  validates_zipcode
 
 RUBY VERSION
    ruby 2.6.1p33

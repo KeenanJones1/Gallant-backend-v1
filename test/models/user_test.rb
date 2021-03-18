@@ -1,5 +1,5 @@
 require 'test_helper'
-
+require 'date'
 # an assertion can ask:
 # does this value = that value?
 # is this object nil?
@@ -14,21 +14,26 @@ class UserTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end
+  user = User.new
+  user1 = User.new(first_name: "X", birth_date: "2012-12-03")
 
   def test_the_truth
     assert true
   end
 
  def test_user_has_first_name
+  user1 = User.new(first_name: "X", birth_date: "2012-12-03")
   user = User.new
   assert_not user.save, "Saved the user without first_name"
+  assert_not_equal( 0, user1.first_name.length, "First name has to be greater than 1 letter")
+  assert_match(/[A-Z]/i, user1.first_name, "First name must contain only letters")
  end
 
- def test_user_first_name_chars
-  user = User.new(first_name: "X", birth_date: "2012-12-03")
-  # assert(user.first_name.length > 0, "First name has to be greater than 1 letter")
-  # assert(user.first_name.match("[a-zA-Z]+") , "First name must contain only letters")
-  # assert(user.birth_date.match(with: "^(?:0[1-9]|[12]\d|3[01])([\/.-])(?:0[1-9]|1[012])\1(?:19|20)\d\d$"))
+ def test_user_birth_day
+  user1 = User.new(first_name: "X", birth_date: "2012-12-03")
+  # make sure this regex is implemented in the controller. 
+  assert_match(/^\d{4}-\d{2}-\d{2}$/, user1.birth_date)
+  
   # assert_not user.save, "Please check user first name"
  end
 
